@@ -1,0 +1,30 @@
+[
+			{
+				"name" : "Asian",
+				"price" : 4.99,
+				"currencytype" : "$",
+				"category" : "Cheap",
+				"image" : "Content/Images/Asian.png"
+			},
+			{
+				"name" : "Swedish",
+				"price" : 24.99,
+				"currencytype" : "$",
+				"category" : "Expensive",
+				"image" : "Content/Images/Swedish.jpg"
+			},
+			{
+				"name" : "Russian",
+				"price" : 14.99,
+				"currencytype" : "$",
+				"category" : "Cheap",
+				"image" : "Content/Images/Russian.jpg"
+			},
+			{
+				"name" : "American",
+				"price" : 44.99,
+				"currencytype" :"$",
+				"category" : "Expensive",
+				"image" : "Content/Images/American.JPG"
+			}
+]

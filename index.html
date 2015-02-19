@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="Main">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Black Market</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Basket -->
+	<div style="width:600px;float:right;border:2px solid black;margin-right:20px;" ng-controller="cartController">
+		<h4>Basket</h4>
+		<table class="table table-striped" >
+				<tr>	
+					<th>Item</th>
+					<th>Qty</th>
+					<th>Price</th>
+				</tr>
+				<tr ng-repeat="cartObj in cartProducts">	
+					<td>
+						{{ cartObj.product.name }}
+					</td>
+					<td>
+						{{ cartObj.quantity }}
+					</td>
+					<td>
+						{{ cartObj.product.price }} {{ cartObj.product.currencytype }}
+					</td>
+				</tr>
+		</table>
+	</div>
+
+<!-- Headline -->
+	<h1>Black Market Products</h1>
+	</br>
+	</br>
+
+<!-- Visning af Categories -->
+	<div ng-controller="productsController">
+		<p>{{ productName }}</p>  
+		<input style="margin:9px;" type="search" placeholder="search product name" ng-model="productName"> 
+		
+		<div style="margin:10px;">
+			{{ categoriesSelected }}
+			<p ng-repeat="CategoryObj in categories">
+				<input type="checkbox" ng-click="categoryChange(CategoryObj.category)"> {{ CategoryObj.category }}
+			</p>
+		</div>
+		</br>
+		</br>
+
+	<!-- Visning af Produkter -->
+		<div style="width:1400px;">
+			<table class="table table-striped">
+				<tr>
+					<th>Type</th>
+					<th>Price</th>	
+					<th>Image</th>
+					<th>Purcahse</th>
+				</tr>
+				<tr ng-repeat="product in products | filter:productName | filter:categoryFilter">
+					<td>
+						{{ product.name }}
+					</td>
+					<td>
+						{{ product.price}}{{ product.currencytype }}
+					</td>
+					<td>
+						<img style="width:100px;" ng-src="{{ product.image }}">
+					</td>
+					<td>
+						<input type="number" ng-model="quantity">
+						<input type="button" class="btn btn-primary" ng-click="addToCart(product)" value="Buy">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="app.module.js"></script>
+	<script src="Products/products.service.js"></script>
+	<script src="Products/products.controller.js"></script>
+	<script src="Cart/cart.controller.js"></script>
+	<script src="Cart/cart.service.js"></script>
+
+</body>
+</html>
